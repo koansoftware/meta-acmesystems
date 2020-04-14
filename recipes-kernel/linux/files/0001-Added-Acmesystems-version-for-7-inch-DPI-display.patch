@@ -1,0 +1,59 @@
+From e81f31d37bb91cc3f98d476c84fb853c24593306 Mon Sep 17 00:00:00 2001
+From: "KoanSoftware.com developers (quad)" <info@koansoftware.com>
+Date: Thu, 16 Jan 2020 15:06:02 +0100
+Subject: [PATCH] Added Acmesystems version for 7 inch DPI display
+
+---
+ arch/arm/boot/dts/overlays/goodix-7-acme.dts | 40 ++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/goodix-7-acme.dts
+
+diff --git a/arch/arm/boot/dts/overlays/goodix-7-acme-overlay.dts b/arch/arm/boot/dts/overlays/goodix-7-acme-overlay.dts
+new file mode 100644
+index 000000000000..ab5be8a4c206
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/goodix-7-acme-overlay.dts
+@@ -0,0 +1,40 @@
++// Device tree overlay for I2C connected Goodix gt9271 multiple touch controller
++// Acme Systems version for 7 inch DPI display
++/dts-v1/;
++/plugin/;
++
++/ {
++        compatible = "brcm,bcm2708";
++
++        fragment@0 {
++                target = <&gpio>;
++                __overlay__ {
++                        goodix_pins: goodix_pins {
++                                brcm,pins = <42 43>; // interrupt and reset
++                                brcm,function = <0 0>; // in
++                                brcm,pull = <2 2>; // pull-up
++                        };
++                };
++        };
++
++        fragment@1 {
++                target = <&i2c1>;
++                __overlay__ {
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                        status = "okay";
++
++                        gt9271: gt9271@5d {
++                                compatible = "goodix,gt9271";
++                                reg = <0x5D>;
++                                pinctrl-names = "default";
++                                pinctrl-0 = <&goodix_pins>;
++                                interrupt-parent = <&gpio>;
++                                interrupts = <42 2>; // high-to-low edge triggered
++                                irq-gpios = <&gpio 42 0>; 
++                                reset-gpios = <&gpio 43 0>;
++                        };
++                };
++        };
++};
++
+-- 
+2.17.1
+

@@ -1,0 +1,31 @@
+# ------------------------------------------------------------------------
+# acme-cm3-panel config brought by KOAN <https://koansoftware.com>
+# ------------------------------------------------------------------------
+
+# Ignore the HDMI cable hotplug (to avoid the delay at startup)
+hdmi_ignore_hotplug=1
+
+# Set the debug port on GPIO32, GPIO33 pins
+force_turbo=1
+dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
+
+# Activates the I2C 1 port on GPIO44 and 45 to talk with the
+# touch screen controller and camera crypto-chip
+dtoverlay=i2c1-bcm2708,sda1_pin=44,scl1_pin=45,pin_func=6
+dtoverlay=goodix-7-acme
+
+# Enable the DPI port to talk with the TFT display
+dtoverlay=dpi18
+overscan_left=0
+overscan_right=0
+overscan_top=0
+overscan_bottom=0
+framebuffer_width=800
+framebuffer_height=480
+enable_dpi_lcd=1
+display_default_lcd=1
+dpi_group=2
+dpi_mode=87
+dpi_output_format=0x6f005
+hdmi_timings=800 0 40 48 88 480 0 13 3 32 0 0 0 60 0 32000000 6
+

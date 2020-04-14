@@ -1,0 +1,24 @@
+From f424c955128cc8cc277f75efa6c990cfaa2dbc01 Mon Sep 17 00:00:00 2001
+From: "KoanSoftware.com developers (quad)" <info@koansoftware.com>
+Date: Thu, 16 Jan 2020 17:03:28 +0100
+Subject: [PATCH] Makefile: Added Acmesystems version for 7 inch DPI display
+
+---
+ arch/arm/boot/dts/overlays/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 6b4af500f51c..6282eceb1d9a 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -38,6 +38,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	enc28j60-spi2.dtbo \
+ 	exc3000.dtbo \
+ 	fe-pi-audio.dtbo \
++	goodix-7-acme.dtbo \
+ 	goodix.dtbo \
+ 	googlevoicehat-soundcard.dtbo \
+ 	gpio-fan.dtbo \
+-- 
+2.17.1
+
