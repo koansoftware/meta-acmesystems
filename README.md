@@ -23,6 +23,7 @@ More information can be found at: <https://github.com/koansoftware/meta-acmesyst
 
 This layer depends on:
 
+```bash
 * URI: git://git.yoctoproject.org/poky
   * branch: zeus
   * revision: HEAD
@@ -31,8 +32,9 @@ This layer depends on:
   * layers: meta-oe, meta-multimedia, meta-networking, meta-python
   * branch: zeus
   * revision: HEAD
+```
 
-
+```bash
 Build Configuration:
 BB_VERSION           = "1.44.0"
 BUILD_SYS            = "x86_64-linux"
@@ -49,18 +51,18 @@ meta-oe              =
 meta-raspberrypi     = 
 meta-qt5             = 
 meta-acmesystems     = 
-
+```
 
 ## Quick Start
 
-1. source sources/poky/oe-init-build-env build
+1. source ```sources/poky/oe-init-build-env build```
 2. Add this layer to bblayers.conf and the dependencies above
-3. Set MACHINE in local.conf to one of the supported boards
-4. bitbake core-image-minimal (or) bitbake meta-toolchain-qt5
+3. Set ```MACHINE``` in ```local.conf``` to one of the supported boards
+4. ```bitbake core-image-minimal``` (or) ```bitbake meta-toolchain-qt5```
 5. dd to a SD card the generated sdimg file (use xzcat if rpi-sdimg.xz is used)
-6. Boot your RPI-CM3-PANEL.
+6. Boot your RPI-CM3-PANEL
 
-## Maintainers
+## Maintainer
 
-* Marco Cavallini `<info@koansoftware.com>`
+* Marco Cavallini `<info AT koansoftware.com>`
 
